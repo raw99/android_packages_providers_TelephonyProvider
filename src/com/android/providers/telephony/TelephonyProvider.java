@@ -194,7 +194,7 @@ public class TelephonyProvider extends ContentProvider
 
         private void createSimInfoTable(SQLiteDatabase db) {
             if (DBG) log("dbh.createSimInfoTable:+");
-            db.execSQL("CREATE TABLE " + SIMINFO_TABLE + "("
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + SIMINFO_TABLE + "("
                     + SubscriptionManager.UNIQUE_KEY_SUBSCRIPTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + SubscriptionManager.ICC_ID + " TEXT NOT NULL,"
                     + SubscriptionManager.SIM_SLOT_INDEX + " INTEGER DEFAULT " + SubscriptionManager.SIM_NOT_INSERTED + ","
@@ -217,7 +217,7 @@ public class TelephonyProvider extends ContentProvider
         private void createCarriersTable(SQLiteDatabase db) {
             // Set up the database schema
             if (DBG) log("dbh.createCarriersTable:+");
-            db.execSQL("CREATE TABLE " + CARRIERS_TABLE +
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + CARRIERS_TABLE +
                 "(_id INTEGER PRIMARY KEY," +
                     "name TEXT," +
                     "numeric TEXT," +
